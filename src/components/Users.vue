@@ -21,7 +21,13 @@
         </div>
         <v-list>
           <template v-for="(user, id) in users.users">
-            <v-subheader :key="id">{{ user.username }}</v-subheader>
+            <v-subheader :key="id">
+              {{ user.username }}
+              <v-spacer></v-spacer>
+              <v-btn @click="$data.removeUser(user.id)" icon>
+                <v-icon>close</v-icon>
+              </v-btn>
+            </v-subheader>
           </template>
         </v-list>
       </v-card>
@@ -35,8 +41,12 @@ export default {
   props: {
     users: Object
   },
-  data: () => ({
-    userInput: ''
-  })
+  data: function() {
+    let data = this;
+    return {
+      removeUser: this.users.removeUser,
+      userInput: ''
+    }
+  }
 }
 </script>

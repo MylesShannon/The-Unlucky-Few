@@ -38,13 +38,13 @@ export default {
       },
       removeUser: function(userId) {
         // remove an existing user by user id
-        this.users.forEach(function(user, index) {
-          if(user.id === userId) {
-            this.users = this.users.splice(index, 1);
-            data.$cookie.set('users', JSON.stringify(this.users));
+        for(var i =0; i < this.users.length; i++) {
+          if(this.users[i].id.toString() == userId) {
+            this.users.splice(index, 1);
+            this.$cookie.set('users', JSON.stringify(this.users));
             return this.users;
           }
-        })
+        }
       },
       shuffleUsers: function() {
         const array = this.users.slice(0);
