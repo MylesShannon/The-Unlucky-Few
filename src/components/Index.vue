@@ -25,26 +25,23 @@ export default {
       users: [],
       getUsers: function() {
         // get list off users from cookie
-        let users = JSON.parse(data.$cookie.get('users'));
-        this.users = users? ;
-        return users;
+        this.users = JSON.parse(data.$cookie.get('users').toString());
+        return this.users;
       },
       addUser: function(username) {
         // add a new user, return list of new users
-        let existingUsers = this.users;
-        let newUserId = existingUsers.length >= 1? existingUsers[existingUsers.length - 1].id + 1: 0;
-        let newUserList = existingUsers.push({id: newUserId, username: username});
-        data.$cookie.set('users', JSON.parse(newUserList));
-        return newUserList;
+        let newUserId = this.users.length >= 1 ? this.users[this.users.length - 1].id + 1: 0;
+        this.users.push({id: newUserId, username: username});
+        data.$cookie.set('users', JSON.stringify(this.users));
+        return this.users;
       },
       removeUser: function(userId) {
         // remove an existing user by user id
-        let existingUsers = this.users;
-        existingUsers.forEach(function(user, index) {
+        this.users.forEach(function(user, index) {
           if(user.id === userId) {
-            let newUserList = existingUsers.splice(index, 1);
-            data.$cookie.set('users', JSON.parse(newUserList));
-            return newUserList;
+            this.users = this.users.splice(index, 1);
+            data.$cookie.set('users', JSON.stringify(this.users));
+            return this.users;
           }
         })
       }
