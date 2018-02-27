@@ -5,7 +5,7 @@
         <p>id: {{ user.id }} username: {{ user.username }}</p>
       </li>
     </ul>
-    <form id="offer-form" v-on:submit="newUSer = users.addUser(newUser.username)">  
+    <form id="offer-form" v-on:submit="newUser = users.addUser(newUser.username)">  
       <input v-model="newUser.username" />
       <input type="submit"/>
     </form>
@@ -18,10 +18,12 @@ export default {
   props: {
     users: Object
   },
-  data: {
-    newUser: {
-      username: ''
-    }
+  data: () => {
+    return {
+      newUser: {
+        username: ''
+      }
+    };
   }
 }
 </script>
