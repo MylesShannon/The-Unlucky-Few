@@ -18,6 +18,7 @@ export default {
   },
   data: function() {
     return {
+      users: [],
       getUsers: function() {
         // get list off users from 
         return cookie.get('unluckyOnes');
@@ -27,7 +28,7 @@ export default {
       },
       addUser: function(username) {
         // add a new user, return list of new users
-        let existingUsers = this.getUsers();
+        let existingUsers = this.users;
         let newUserId = existingUsers[existingUsers.length - 1].id + 1;
         let newUserList = existingUsers.push({id: newUserId, username: username});
         cookie.set('unluckyOnes', newUserList);
@@ -35,7 +36,7 @@ export default {
       },
       removeUser: function(userId) {
         // remove an existing user by user id
-        let existingUsers = this.getUsers();
+        let existingUsers = this.users;
         existingUsers.forEach(function(user, index) {
           if(user.id === userId) {
             let newUserList = existingUsers.splice(index, 1);
