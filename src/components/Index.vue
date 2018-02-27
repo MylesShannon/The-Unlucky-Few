@@ -31,15 +31,14 @@ export default {
       addUser: function(event, username) {
         event.preventDefault();
         // add a new user, return list of new users
-        let newUserId = this.users.length >= 1 ? this.users[this.users.length - 1].id + 1: 0;
-        this.users.push({id: newUserId, username: username});
+        this.users.push({id: Date.now(), username: username});
         data.$cookie.set('users', JSON.stringify(this.users));
         return this.users;
       },
-      removeUser: function(userId) {
+      removeUser: function(user) {
         // remove an existing user by user id
         for(var i = 0; i < data.users.length; i++) {
-          if(data.users[i].id == userId) {
+          if(data.users[i].id == user.id) {
             data.users.splice(i, 1);
             data.$cookie.set('users', JSON.stringify(data.users));
             return data.users;

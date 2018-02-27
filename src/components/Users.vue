@@ -22,9 +22,9 @@
         <v-list>
           <v-list-tile v-for="(user, index) in users.users" :key="index">
             <v-list-tile-content>
-               <v-list-tile-title>{{index+1+'. '+user.username }}</v-list-tile-title>
+               <v-list-tile-title>{{ index+1+'. '+user.username }}</v-list-tile-title>
             </v-list-tile-content>
-            <v-list-tile-action @click="$data.removeUser(user.id)">
+            <v-list-tile-action @click="$data.removeUser(user)">
               <v-btn icon>
                 <v-icon>close</v-icon>
               </v-btn>
