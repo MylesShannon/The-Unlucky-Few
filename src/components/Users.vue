@@ -5,20 +5,21 @@
         <v-toolbar color="cyan" dark>
           <v-toolbar-title>User List</v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-btn icon>
-            <v-icon>search</v-icon>
+          <v-btn icon @click="users.shuffleUsers()">
+            <v-icon>shuffle</v-icon>
           </v-btn>
         </v-toolbar>
-        <v-form>
-        <v-text-field
-          v-model="userInput"
-          name="user-input"
-          label="Stand Up Member"
-        ></v-text-field>
+        <div class="pa-2">
+          <v-text-field
+            color="cyan"
+            v-model="userInput"
+            name="user-input"
+            label="Stand Up Member"
+          ></v-text-field>
+        </div>
         <v-btn @click="users.addUser(userInput)" color="success">Add</v-btn>
-        </v-form>
         <v-list>
-          <template v-for="(user, id) in users.getUsers()">
+          <template v-for="(user, id) in users.users">
             <v-subheader :key="id">{{ user.username }}</v-subheader>
           </template>
         </v-list>
