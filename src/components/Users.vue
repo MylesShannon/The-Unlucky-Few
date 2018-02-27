@@ -9,6 +9,14 @@
             <v-icon>search</v-icon>
           </v-btn>
         </v-toolbar>
+        <v-form>
+        <v-text-field
+          v-model="userInput"
+          name="user-input"
+          label="Stand Up Member"
+        ></v-text-field>
+        <v-btn @click="users.addUser(userInput)" color="success">Add</v-btn>
+        </v-form>
         <v-list>
           <template v-for="(user, id) in users.getUsers()">
             <v-subheader :key="id">{{ user.username }}</v-subheader>
@@ -24,6 +32,9 @@ export default {
   name: 'Users',
   props: {
     users: Object
-  }
+  },
+  data: () => ({
+    userInput: ''
+  })
 }
 </script>

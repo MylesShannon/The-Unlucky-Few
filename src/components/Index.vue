@@ -26,13 +26,13 @@ export default {
       getUsers: function() {
         // get list off users from cookie
         let users = JSON.parse(data.$cookie.get('users'));
-        this.users = users;
+        this.users = users? ;
         return users;
       },
       addUser: function(username) {
         // add a new user, return list of new users
         let existingUsers = this.users;
-        let newUserId = existingUsers[existingUsers.length - 1].id + 1;
+        let newUserId = existingUsers.length >= 1? existingUsers[existingUsers.length - 1].id + 1: 0;
         let newUserList = existingUsers.push({id: newUserId, username: username});
         data.$cookie.set('users', JSON.parse(newUserList));
         return newUserList;
