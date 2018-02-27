@@ -20,9 +20,9 @@
           </v-form>
         </div>
         <v-list>
-          <template v-for="(user, id) in users.users">
+          <template v-for="(user, index) in users.users">
             <v-subheader :key="id">
-              {{ user.username }}
+              {{index+1+': '+user.username }}
               <v-spacer></v-spacer>
               <v-btn @click="$data.removeUser(user.id)" icon>
                 <v-icon>close</v-icon>
