@@ -3,6 +3,9 @@
     <v-content>
       <Index></Index>
     </v-content>
+    <v-footer class="pa-3">
+      <div>Created by Myles Shannon &amp; Stephen Traiforos</div>
+    </v-footer>
   </v-app>
 </template>
 

@@ -48,7 +48,6 @@ export default {
     users: Object
   },
   data: function() {
-    let data = this;
     return {
       removeUser: this.users.removeUser,
       userInput: ''
