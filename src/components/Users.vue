@@ -3,7 +3,7 @@
     <v-flex xs12 sm6 offset-sm3>
       <v-card>
         <v-toolbar color="cyan" dark>
-          <v-toolbar-title>User List</v-toolbar-title>
+          <v-toolbar-title>{{ "\{\{Your Team Name Here\}\}" }}</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-btn icon @click="users.shuffleUsers()">
             <v-icon>shuffle</v-icon>

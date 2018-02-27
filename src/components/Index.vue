@@ -38,11 +38,11 @@ export default {
       },
       removeUser: function(userId) {
         // remove an existing user by user id
-        for(var i =0; i < this.users.length; i++) {
-          if(this.users[i].id.toString() == userId) {
-            this.users.splice(index, 1);
-            this.$cookie.set('users', JSON.stringify(this.users));
-            return this.users;
+        for(var i = 0; i < data.users.length; i++) {
+          if(data.users[i].id == userId) {
+            data.users.splice(i, 1);
+            data.$cookie.set('users', JSON.stringify(data.users));
+            return data.users;
           }
         }
       },

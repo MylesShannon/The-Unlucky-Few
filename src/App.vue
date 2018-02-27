@@ -3,7 +3,6 @@
     <v-content>
       <Index></Index>
     </v-content>
-    <v-footer app></v-footer>
   </v-app>
 </template>
 
