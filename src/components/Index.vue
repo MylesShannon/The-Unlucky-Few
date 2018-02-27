@@ -1,7 +1,7 @@
 <template>
-  <div class="Index">
+  <v-container>
     <Users :users="$data" />
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -15,16 +15,23 @@ export default {
   },
   created: function () {
     console.log('created', this);
+    if(cookie.get('unluckyOnes') === undefined) {
+      cookie.set('unluckyOnes', {users: [
+        {id: 1, username: 'Myles'}
+      ]});
+    }
+    this.$data.getUsers();
   },
   data: function() {
     return {
-      users: [],
+      users: [
+        {id: 0, username: 'Myles'},
+        {id: 1, username: 'Stephen'}
+      ],
       getUsers: function() {
-        // get list off users from 
-        return cookie.get('unluckyOnes');
-        // return [
-        //   {id: 1, username: 'HelloWorld'}
-        // ]
+        // get list off users from cookie
+        this.users = cookie.get('unluckyOnes');
+        return this.users;
       },
       addUser: function(username) {
         // add a new user, return list of new users
@@ -49,21 +56,3 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

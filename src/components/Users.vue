@@ -1,15 +1,22 @@
 <template>
-  <div class="Users">
-    <ul id="user-list">
-      <li v-for="user in users.getUsers()" :key="user.id">
-        <p>id: {{ user.id }} username: {{ user.username }}</p>
-      </li>
-    </ul>
-    <form id="offer-form" v-on:submit="newUser = users.addUser(newUser.username)">  
-      <input v-model="newUser.username" />
-      <input type="submit"/>
-    </form>
-  </div>
+  <v-layout row>
+    <v-flex xs12 sm6 offset-sm3>
+      <v-card>
+        <v-toolbar color="cyan" dark>
+          <v-toolbar-title>User List</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-btn icon>
+            <v-icon>search</v-icon>
+          </v-btn>
+        </v-toolbar>
+        <v-list>
+          <template v-for="(user, id) in users.getUsers()">
+            <v-subheader :key="id">{{ user.username }}</v-subheader>
+          </template>
+        </v-list>
+      </v-card>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -17,20 +24,6 @@ export default {
   name: 'Users',
   props: {
     users: Object
-  },
-  data: () => {
-    return {
-      newUser: {
-        username: ''
-      }
-    };
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-p {
-  font-weight: bold;
-}
-</style>

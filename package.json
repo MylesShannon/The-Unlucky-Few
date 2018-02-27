@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "vue": "^2.5.13",
-    "vue-cookie": "^1.1.4"
+    "vue-cookie": "^1.1.4",
+    "vuetify": "^1.0.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-beta.1",
