@@ -14,8 +14,8 @@ export default {
   },
   created: function () {
     // console.log('created', this);
-    if(!this.$cookie.get('users')) {
-      this.$cookie.set('users', JSON.stringify([]));
+    if(!this.$cookie.get('unluckyOnes')) {
+      this.$cookie.set('unluckyOnes', JSON.stringify([]));
     }
     this.$data.getUsers();
   },
@@ -25,14 +25,14 @@ export default {
       users: [],
       getUsers: function() {
         // get list off users from cookie
-        this.users = JSON.parse(data.$cookie.get('users').toString());
+        this.users = JSON.parse(data.$cookie.get('unluckyOnes').toString());
         return this.users;
       },
       addUser: function(event, username) {
         event.preventDefault();
         // add a new user, return list of new users
         this.users.push({id: Date.now(), username: username});
-        data.$cookie.set('users', JSON.stringify(this.users));
+        data.$cookie.set('unluckyOnes', JSON.stringify(this.users));
         return this.users;
       },
       removeUser: function(user) {
@@ -40,7 +40,7 @@ export default {
         for(var i = 0; i < data.users.length; i++) {
           if(data.users[i].id == user.id) {
             data.users.splice(i, 1);
-            data.$cookie.set('users', JSON.stringify(data.users));
+            data.$cookie.set('unluckyOnes', JSON.stringify(data.users));
             return data.users;
           }
         }
@@ -63,6 +63,7 @@ export default {
           array[currentIndex] = array[randomIndex];
           array[randomIndex] = temporaryValue;
         }
+        data.$cookie.set('unluckyOnes', JSON.stringify(array));
         this.users = array;
       }
     }
