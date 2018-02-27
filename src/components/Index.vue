@@ -28,7 +28,8 @@ export default {
         this.users = JSON.parse(data.$cookie.get('users').toString());
         return this.users;
       },
-      addUser: function(username) {
+      addUser: function(event, username) {
+        event.preventDefault();
         // add a new user, return list of new users
         let newUserId = this.users.length >= 1 ? this.users[this.users.length - 1].id + 1: 0;
         this.users.push({id: newUserId, username: username});

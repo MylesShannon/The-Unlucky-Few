@@ -9,15 +9,16 @@
             <v-icon>shuffle</v-icon>
           </v-btn>
         </v-toolbar>
-        <div class="pa-2">
-          <v-text-field
-            color="cyan"
-            v-model="userInput"
-            name="user-input"
-            label="Stand Up Member"
-          ></v-text-field>
+        <div class="px-2">
+          <v-form @submit="users.addUser($event, userInput)">
+            <v-text-field
+              color="cyan"
+              v-model="userInput"
+              name="user-input"
+              label="Stand Up Member"
+            ></v-text-field>
+          </v-form>
         </div>
-        <v-btn @click="users.addUser(userInput)" color="success">Add</v-btn>
         <v-list>
           <template v-for="(user, id) in users.users">
             <v-subheader :key="id">{{ user.username }}</v-subheader>
