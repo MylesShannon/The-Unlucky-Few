@@ -22,7 +22,7 @@
         <v-list>
           <template v-for="(user, index) in users.users">
             <v-subheader :key="id">
-              {{index+1+': '+user.username }}
+              {{index+1+'. '+user.username }}
               <v-spacer></v-spacer>
               <v-btn @click="$data.removeUser(user.id)" icon>
                 <v-icon>close</v-icon>
