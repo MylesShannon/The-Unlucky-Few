@@ -20,9 +20,14 @@
           </v-form>
         </div>
         <v-list>
+          <v-list-tile v-if="users.users.length === 0">
+            <v-list-tile-content>
+               <v-list-tile-title><i>Add a Member!</i></v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
           <v-list-tile v-for="(user, index) in users.users" :key="index">
             <v-list-tile-content>
-               <v-list-tile-title>{{ index+1+'. '+user.username }}</v-list-tile-title>
+               <v-list-tile-title v-if="index >= 0">{{ index+1+'. '+user.username }}</v-list-tile-title>
             </v-list-tile-content>
             <v-list-tile-action @click="$data.removeUser(user)">
               <v-btn icon>
