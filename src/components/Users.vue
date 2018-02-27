@@ -10,7 +10,7 @@
           </v-btn>
         </v-toolbar>
         <div class="px-2">
-          <v-form @submit="users.addUser($event, userInput)">
+          <v-form @submit="users.addUser($event, userInput); userInput = ''">
             <v-text-field
               color="cyan"
               v-model="userInput"
@@ -20,15 +20,16 @@
           </v-form>
         </div>
         <v-list>
-          <template v-for="(user, index) in users.users">
-            <v-subheader :key="id">
-              {{index+1+'. '+user.username }}
-              <v-spacer></v-spacer>
-              <v-btn @click="$data.removeUser(user.id)" icon>
+          <v-list-tile v-for="(user, index) in users.users" :key="index">
+            <v-list-tile-content>
+               <v-list-tile-title>{{index+1+'. '+user.username }}</v-list-tile-title>
+            </v-list-tile-content>
+            <v-list-tile-action @click="$data.removeUser(user.id)">
+              <v-btn icon>
                 <v-icon>close</v-icon>
               </v-btn>
-            </v-subheader>
-          </template>
+            </v-list-tile-action>
+          </v-list-tile>
         </v-list>
       </v-card>
     </v-flex>
