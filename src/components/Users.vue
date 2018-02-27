@@ -2,17 +2,17 @@
   <v-layout row>
     <v-flex xs12 sm6 offset-sm3>
       <v-card>
-        <v-toolbar color="cyan" dark>
+        <v-toolbar color="orange" dark>
           <v-toolbar-title>{{ "\{\{Your Team Name Here\}\}" }}</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-btn icon @click="users.shuffleUsers()">
             <v-icon>shuffle</v-icon>
           </v-btn>
         </v-toolbar>
-        <div class="px-2">
+        <div class="px-2 pt-1">
           <v-form @submit="users.addUser($event, userInput); userInput = ''">
             <v-text-field
-              color="cyan"
+              color="blue darken-4"
               v-model="userInput"
               name="user-input"
               label="Stand Up Member"
